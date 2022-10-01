@@ -1,0 +1,149 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ecf0f1;
+}
+
+
+button{
+    padding: 8px 16px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 10px;
+    margin: 0 10px;
+    min-width: 146px;
+}
+
+button.success{
+    background: #71be34;
+}
+
+button.warning{
+    background: #ffb702;
+}
+
+button.error{
+    background: #ff623d;
+}
+
+#toasts{
+    position: fixed;
+	top: 10px;
+	right: 10px;
+	display: flex;
+	flex-direction: column;
+}
+
+.toasts{
+    background-color: #71be34;
+    padding: 20px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    animation: show 1s ease forwards;
+    display: flex;
+    align-items: center;
+    border-left: 6px solid;
+    color: #fff;
+}
+
+.toasts.success{
+    background: rgba(113, 190, 52,0.5);
+    border-color: #71be34;
+}
+
+.toasts.warning{
+    background: rgba(255, 183, 2,0.5);
+    border-color:#ffb702;
+}
+
+.toasts.error{
+    background: rgba(255, 98, 61,0.5);
+    border-color:#ff623d;
+}
+
+.toasts i {
+    font-size: 28px;
+    color: white;
+  }
+  
+.toasts .msg {
+    padding: 0 20px;
+    font-size: 16px;
+    color: white;
+}
+
+
+.countdown {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    z-index: 1;
+    animation: countdown 4s linear forwards;
+}
+
+.toasts.success .countdown{
+    background-color:#71be34;    
+}
+
+.toasts.warning .countdown{
+    background-color:#ffb702;
+}
+
+.toasts.error .countdown{
+    background-color:#ff623d;
+}
+
+
+
+@keyframes countdown{
+    to{
+        width: 100%;
+    }
+    from{
+        width: 0;
+    }
+}
+
+@keyframes hide{
+    0%{
+        transform: translateX(-10px);
+    }
+    40%{
+        transform: translateX(0)
+    }
+    80%{
+        transform: translateX(-10%)
+    }
+    100%{
+        transform: translateX(120%)
+    }
+}
+
+@keyframes show{
+    0%{
+        transform: translateX(100%)
+    }
+    40% {
+        transform: translateX(-10%);
+    }
+    80% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-10px);
+    }
+}

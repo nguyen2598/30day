@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    overflow: hidden;
+    background-color: #8a66b4;
+    display: flex;
+    font-family: sans-serif;
+    align-items: center;
+    justify-content: center;
+}
+
+.counter{
+    background-color: #6b38b6;
+	margin: 30px;
+    padding: 20px 40px;
+    border-radius:5px;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+	box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+
+}
+
+.counter h2{
+    font-size: 60px;
+}
+
