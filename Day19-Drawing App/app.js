@@ -39,13 +39,16 @@ var islumia = result.indexOf("windows") > -1;
 document.writeln(result);
 if(isphone)
 {
+    canvas.style.width=300 + 'px'
+    canvas.style.height=660 +'px'
     console.log('dien thoai')
-    document.addEventListener('touchstart',e=>{
+    canvas.addEventListener('touchstart',e=>{
         pos1={
             x:e.offsetX,
             y:e.offsetY
         }
         isDrawing=true
+        console.log('dien thoai 2')
     })
     canvas.addEventListener('touchmove',e=>{
        if(isDrawing){
@@ -73,8 +76,10 @@ if(isphone)
                 y:pos2.y
             }
        }
+       console.log('dien thoai 3')
     })
     document.addEventListener('touchend',e=>{
+        console.log('dien thoai 4')
         isDrawing=false
     })
     
