@@ -39,49 +39,124 @@ var islumia = result.indexOf("windows") > -1;
 document.writeln(result);
 if(isphone)
 {
-    document.writeln('bạn đang truy cập web bằng điện thoại');
-}
-if(islumia){
-    document.writeln('bạn đang truy cập web bằng điện thoại windows');
-}
-
-document.addEventListener('mousedown',e=>{
-    pos1={
-        x:e.offsetX,
-        y:e.offsetY
-    }
-    isDrawing=true
-})
-canvas.addEventListener('mousemove',e=>{
-   if(isDrawing){
-        pos2={
+    document.addEventListener('touchstart',e=>{
+        pos1={
             x:e.offsetX,
             y:e.offsetY
         }
-
-        ctx.beginPath();
-        // Net vẽ tròn fill net ve
-        ctx.arc(pos1.x, pos1.y, size/2, 0, 2 * Math.PI);
-        ctx.fill();
-        ctx.fillStyle=colorPaint
-
-        // Net ve outline
-        ctx.beginPath();
-        ctx.strokeStyle=colorPaint
-        ctx.moveTo(pos1.x, pos1.y);
-        ctx.lineTo(pos2.x, pos2.y);
-        ctx.lineWidth=size
-        ctx.stroke();
-
+        isDrawing=true
+    })
+    canvas.addEventListener('touchmove',e=>{
+       if(isDrawing){
+            pos2={
+                x:e.offsetX,
+                y:e.offsetY
+            }
+    
+            ctx.beginPath();
+            // Net vẽ tròn fill net ve
+            ctx.arc(pos1.x, pos1.y, size/2, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.fillStyle=colorPaint
+    
+            // Net ve outline
+            ctx.beginPath();
+            ctx.strokeStyle=colorPaint
+            ctx.moveTo(pos1.x, pos1.y);
+            ctx.lineTo(pos2.x, pos2.y);
+            ctx.lineWidth=size
+            ctx.stroke();
+    
+            pos1={
+                x:pos2.x,
+                y:pos2.y
+            }
+       }
+    })
+    document.addEventListener('touchend',e=>{
+        isDrawing=false
+    })
+    
+    document.writeln('bạn đang truy cập web bằng điện thoại');
+}
+if(islumia){
+    document.addEventListener('mousedown',e=>{
         pos1={
-            x:pos2.x,
-            y:pos2.y
+            x:e.offsetX,
+            y:e.offsetY
         }
-   }
-})
-document.addEventListener('mouseup',e=>{
-    isDrawing=false
-})
+        isDrawing=true
+    })
+    canvas.addEventListener('mousemove',e=>{
+       if(isDrawing){
+            pos2={
+                x:e.offsetX,
+                y:e.offsetY
+            }
+    
+            ctx.beginPath();
+            // Net vẽ tròn fill net ve
+            ctx.arc(pos1.x, pos1.y, size/2, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.fillStyle=colorPaint
+    
+            // Net ve outline
+            ctx.beginPath();
+            ctx.strokeStyle=colorPaint
+            ctx.moveTo(pos1.x, pos1.y);
+            ctx.lineTo(pos2.x, pos2.y);
+            ctx.lineWidth=size
+            ctx.stroke();
+    
+            pos1={
+                x:pos2.x,
+                y:pos2.y
+            }
+       }
+    })
+    document.addEventListener('mouseup',e=>{
+        isDrawing=false
+    })
+    document.writeln('bạn đang truy cập web bằng điện thoại windows');
+}
+
+// document.addEventListener('mousedown',e=>{
+//     pos1={
+//         x:e.offsetX,
+//         y:e.offsetY
+//     }
+//     isDrawing=true
+// })
+// canvas.addEventListener('mousemove',e=>{
+//    if(isDrawing){
+//         pos2={
+//             x:e.offsetX,
+//             y:e.offsetY
+//         }
+
+//         ctx.beginPath();
+//         // Net vẽ tròn fill net ve
+//         ctx.arc(pos1.x, pos1.y, size/2, 0, 2 * Math.PI);
+//         ctx.fill();
+//         ctx.fillStyle=colorPaint
+
+//         // Net ve outline
+//         ctx.beginPath();
+//         ctx.strokeStyle=colorPaint
+//         ctx.moveTo(pos1.x, pos1.y);
+//         ctx.lineTo(pos2.x, pos2.y);
+//         ctx.lineWidth=size
+//         ctx.stroke();
+
+//         pos1={
+//             x:pos2.x,
+//             y:pos2.y
+//         }
+//    }
+// })
+// document.addEventListener('mouseup',e=>{
+//     isDrawing=false
+// })
 
 color.addEventListener('change',e=>{
     colorPaint=e.target.value
