@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+}
+
+.tool{
+    background-color:rgb(126, 197, 227);
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    /* margin: 0 auto; */
+}
+
+.tool > *{
+    height: 40px;
+    width: 40px;
+    background-color:#fff;
+    margin: 5px;
+    font-size: 20px;
+    padding: 6px;
+    border: none;
+}
+
+#save{
+    margin-left: auto;
+}
+
+.container{
+    display: flex;
+    justify-content:center;
+}
+
+canvas{
+    /* width: 1500px;
+    height: 800px; */
+    
+    border: 1px solid #000;
+}
