@@ -34,11 +34,12 @@ let pos2={
 // check thiết bị
 var result = navigator.userAgent.toLowerCase();
 console.log(result)
-var isphone = result.indexOf("phone") > -1;
+var isphone = result.indexOf("mobile") > -1;
 var islumia = result.indexOf("windows") > -1;
 document.writeln(result);
 if(isphone)
 {
+    console.log('dien thoai')
     document.addEventListener('touchstart',e=>{
         pos1={
             x:e.offsetX,
