@@ -31,6 +31,20 @@ let pos2={
     y:0
 }
 
+// check thiết bị
+var result = navigator.userAgent.toLowerCase();
+console.log(result)
+var isphone = result.indexOf("phone") > -1;
+var islumia = result.indexOf("windows") > -1;
+document.writeln(result);
+if(isphone)
+{
+    document.writeln('bạn đang truy cập web bằng điện thoại');
+}
+if(islumia){
+    document.writeln('bạn đang truy cập web bằng điện thoại windows');
+}
+
 document.addEventListener('mousedown',e=>{
     pos1={
         x:e.offsetX,
