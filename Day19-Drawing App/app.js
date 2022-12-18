@@ -5,7 +5,7 @@ let increase = document.querySelector('#increase')
 let save = document.querySelector('#save')
 let clear = document.querySelector('#clear')
 let sizeEl = document.querySelector('#size')
-
+let text = document.querySelector('.text')
 let canvas = document.querySelector('canvas')
 let ctx= canvas.getContext('2d')
 
@@ -31,30 +31,30 @@ let pos2={
     y:0
 }
 
-// check thiết bị
 var result = navigator.userAgent.toLowerCase();
-console.log(result)
+// console.log(result)
 var isphone = result.indexOf("mobile") > -1;
-var islumia = result.indexOf("windows") > -1;
-document.writeln(result);
-if(isphone)
-{
-    canvas.style.width=300 + 'px'
-    canvas.style.height=660 +'px'
-    console.log('dien thoai')
-    canvas.addEventListener('touchstart',e=>{
+var isLap = result.indexOf("windows") > -1;
+// document.writeln(result);
+
+if(isphone){
+    text.innerText="Bạn đang truy cập từ điện thoại"
+    canvas.style.width=300+'px'
+    canvas.style.height=400+'px'
+    canvas.addEventListener('touchstart',function(e){
         pos1={
-            x:e.offsetX,
-            y:e.offsetY
+            x:e.touches[0].clientX - this.offsetLeft,
+            y:e.touches[0].clientY - this.offsetTop
         }
+        console.log(this);
+        console.log(e.touches[0].clientY - this.offsetTop);
         isDrawing=true
-        console.log('dien thoai 2')
     })
-    canvas.addEventListener('touchmove',e=>{
+    canvas.addEventListener('touchmove',function(e){
        if(isDrawing){
             pos2={
-                x:e.offsetX,
-                y:e.offsetY
+                x:e.touches[0].clientX - this.offsetLeft,
+                y:e.touches[0].clientY - this.offsetTop
             }
     
             ctx.beginPath();
@@ -76,21 +76,21 @@ if(isphone)
                 y:pos2.y
             }
        }
-       console.log('dien thoai 3')
+       console.log("b")
     })
     document.addEventListener('touchend',e=>{
-        console.log('dien thoai 4')
         isDrawing=false
+        console.log("c")
     })
-    
-    document.writeln('bạn đang truy cập web bằng điện thoại');
 }
-if(islumia){
+if(isLap){
+    text.innerText="Bạn đang truy cập từ máy tính"
     document.addEventListener('mousedown',e=>{
         pos1={
             x:e.offsetX,
             y:e.offsetY
         }
+        console.log(e)
         isDrawing=true
     })
     canvas.addEventListener('mousemove',e=>{
@@ -123,46 +123,7 @@ if(islumia){
     document.addEventListener('mouseup',e=>{
         isDrawing=false
     })
-    document.writeln('bạn đang truy cập web bằng điện thoại windows');
 }
-
-// document.addEventListener('mousedown',e=>{
-//     pos1={
-//         x:e.offsetX,
-//         y:e.offsetY
-//     }
-//     isDrawing=true
-// })
-// canvas.addEventListener('mousemove',e=>{
-//    if(isDrawing){
-//         pos2={
-//             x:e.offsetX,
-//             y:e.offsetY
-//         }
-
-//         ctx.beginPath();
-//         // Net vẽ tròn fill net ve
-//         ctx.arc(pos1.x, pos1.y, size/2, 0, 2 * Math.PI);
-//         ctx.fill();
-//         ctx.fillStyle=colorPaint
-
-//         // Net ve outline
-//         ctx.beginPath();
-//         ctx.strokeStyle=colorPaint
-//         ctx.moveTo(pos1.x, pos1.y);
-//         ctx.lineTo(pos2.x, pos2.y);
-//         ctx.lineWidth=size
-//         ctx.stroke();
-
-//         pos1={
-//             x:pos2.x,
-//             y:pos2.y
-//         }
-//    }
-// })
-// document.addEventListener('mouseup',e=>{
-//     isDrawing=false
-// })
 
 color.addEventListener('change',e=>{
     colorPaint=e.target.value
