@@ -7,6 +7,7 @@ let clear = document.querySelector('#clear')
 let sizeEl = document.querySelector('#size')
 let text = document.querySelector('.text')
 let canvas = document.querySelector('canvas')
+let pen= document.querySelector('#pen')
 let ctx= canvas.getContext('2d')
 
 // kiem tra xem co dang an chuot ko
@@ -21,6 +22,8 @@ let size=5
 // init size
 sizeEl.innerText=size
 
+// prev colorPaint
+let prevColor='#000';
 let pos1={
     x:0,
     y:0
@@ -39,14 +42,17 @@ var isLap = result.indexOf("windows") > -1;
 
 if(isphone){
     text.innerText="Bạn đang truy cập từ điện thoại"
-    canvas.style.width=300+'px'
-    canvas.style.height=400+'px'
+    // canvas.style.width=300+'px'
+    // canvas.style.height=400+'px'
+    canvas.setAttribute('width','300px')
+    canvas.setAttribute('height','400px')
     canvas.addEventListener('touchstart',function(e){
         pos1={
             x:e.touches[0].clientX - this.offsetLeft,
             y:e.touches[0].clientY - this.offsetTop
         }
-        console.log(this);
+        
+        console.log(this.offsetLeft,this.offsetTop);
         console.log(e.touches[0].clientY - this.offsetTop);
         isDrawing=true
     })
@@ -93,6 +99,14 @@ if(isLap){
         console.log(e)
         isDrawing=true
     })
+    for(let i=0;i<canvas.height;i+=30){
+            ctx.beginPath();
+            ctx.strokeStyle="#fff"
+            ctx.moveTo(0, i);
+            ctx.lineTo(canvas.width, i);
+            ctx.lineWidth=30
+            ctx.stroke();
+    }
     canvas.addEventListener('mousemove',e=>{
        if(isDrawing){
             pos2={
@@ -127,10 +141,15 @@ if(isLap){
 
 color.addEventListener('change',e=>{
     colorPaint=e.target.value
+    prevColor=colorPaint
 })
 
 eraser.addEventListener('click',e=>{
     colorPaint="#fff"
+})
+
+pen.addEventListener('click',e=>{
+    colorPaint=prevColor
 })
 
 decrease.addEventListener('click',e=>{
@@ -145,6 +164,15 @@ increase.addEventListener('click',e=>{
 
 clear.addEventListener('click',e=>{
     ctx.clearRect(0,0,canvas.width,canvas.height)
+
+    for(let i=0;i<canvas.height;i+=30){
+        ctx.beginPath();
+        ctx.strokeStyle="#fff"
+        ctx.moveTo(0, i);
+        ctx.lineTo(canvas.width, i);
+        ctx.lineWidth=30
+        ctx.stroke();
+    }
 })
 
 save.addEventListener('click',e=>{
