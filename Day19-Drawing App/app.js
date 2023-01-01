@@ -44,8 +44,8 @@ if(isphone){
     text.innerText="Bạn đang truy cập từ điện thoại"
     // canvas.style.width=300+'px'
     // canvas.style.height=400+'px'
-    canvas.setAttribute('width','300px')
-    canvas.setAttribute('height','400px')
+    canvas.setAttribute('width','345px')
+    canvas.setAttribute('height','600px')
     canvas.addEventListener('touchstart',function(e){
         pos1={
             x:e.touches[0].clientX - this.offsetLeft,
